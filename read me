@@ -1,0 +1,7 @@
+dit is hoe je de code gebruikt!
+-------------------------------
+this is how you use the code!
+-------------------------------
+NL: het is heel makelijk je start het gewoon op en hij begint je ram geheugen te meten wat je op dat moment gebruikt en loged het naar een yaml file genaamed Memory_logs.yaml. als je hem wil stopen druk je gewoon op enter net zo als die zecht dat je moet doen.
+----------------------------------------------------------------------------------------------------------------------------------------
+ENG: its realy easy just run the code and it will start to look at how much ram you are using and it will log this to a yaml file named Memory_logs.yaml. if you want to stop the proces just press enter as it tells you to do.
