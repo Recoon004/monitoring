@@ -2,17 +2,29 @@ package main
 
 import (
 	"bufio"
+	"database/sql"
 	"fmt"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
 
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/shirou/gopsutil/cpu"
 	"github.com/shirou/gopsutil/mem"
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v2"
 )
+
+const (
+	username = "SQLRENS"
+	password = "J4rPpYGNx6k%Khj4H4wyaYYs$js&&6j%%"
+	hostname = "sqlrens.mysql.database.azure.com"
+	port     = "3306"
+	dbname   = "monitoring"
+)
+
+const connectionstring = username + ":" + password + "@tcp(" + hostname + ":" + port + ")/" + dbname
 
 type SystemStats struct {
 	Timestamp  string  `yaml:"timestamp"`
@@ -56,6 +68,25 @@ func monitorMemory(stopCh chan bool) {
 
 			totalUsed := float64(vmStat.Used) / 1024 / 1024 / 1024
 
+			db, err := sql.Open("mysql", connectionstring)
+			if err != nil {
+				panic(err.Error())
+			}
+			defer db.Close()
+
+			insertQuery := "INSERT INTO data (CPU, MEM, Time) VALUES (?, ?, ?)"
+
+			stmt, err := db.Prepare(insertQuery)
+			if err != nil {
+				panic(err.Error())
+			}
+			defer stmt.Close()
+
+			_, err = stmt.Exec(0, totalUsed, time.Now())
+			if err != nil {
+				panic(err.Error())
+			}
+
 			// Maakt een nieuwe log entry aan
 			logEntry := SystemStats{
 				Timestamp:  time.Now().Format(time.RFC3339),
@@ -91,8 +122,26 @@ func monitorCPU(stopCh chan bool) {
 				log.Errorf("Failed to get CPU information: %v", err)
 				return
 			}
-
 			cpuUsed := cpuStat[0]
+
+			db, err := sql.Open("mysql", connectionstring)
+			if err != nil {
+				panic(err.Error())
+			}
+			defer db.Close()
+
+			insertQuery := "INSERT INTO data (CPU, MEM, Time) VALUES (?, ?, ?)"
+
+			stmt, err := db.Prepare(insertQuery)
+			if err != nil {
+				panic(err.Error())
+			}
+			defer stmt.Close()
+
+			_, err = stmt.Exec(cpuUsed, 0, time.Now())
+			if err != nil {
+				panic(err.Error())
+			}
 
 			// Maakt een nieuwe log entry aan
 			logEntry := SystemStats{
@@ -116,6 +165,7 @@ func monitorCPU(stopCh chan bool) {
 }
 
 func main() {
+
 	Logger()
 
 	// Vraag aan de gebruiker welke monitor ze willen uitvoeren
