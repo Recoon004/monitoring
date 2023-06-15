@@ -73,15 +73,15 @@ func monitorMemory(stopCh chan bool) {
 				panic(err.Error())
 			}
 			defer db.Close()
-
+			// dit is de query die we willen uitvoeren
 			insertQuery := "INSERT INTO data (CPU, MEM, Time) VALUES (?, ?, ?)"
-
+			// hier maken we de query klaar voor gebruik
 			stmt, err := db.Prepare(insertQuery)
 			if err != nil {
 				panic(err.Error())
 			}
 			defer stmt.Close()
-
+			// hier voeren we de query uit
 			_, err = stmt.Exec(0, totalUsed, time.Now())
 			if err != nil {
 				panic(err.Error())
@@ -123,21 +123,21 @@ func monitorCPU(stopCh chan bool) {
 				return
 			}
 			cpuUsed := cpuStat[0]
-
+			// hier maken we de verbinding met de database
 			db, err := sql.Open("mysql", connectionstring)
 			if err != nil {
 				panic(err.Error())
 			}
 			defer db.Close()
-
+			// dit is de query die we willen uitvoeren
 			insertQuery := "INSERT INTO data (CPU, MEM, Time) VALUES (?, ?, ?)"
-
+			// hier maken we de query klaar voor gebruik
 			stmt, err := db.Prepare(insertQuery)
 			if err != nil {
 				panic(err.Error())
 			}
 			defer stmt.Close()
-
+			// hier voeren we de query uit
 			_, err = stmt.Exec(cpuUsed, 0, time.Now())
 			if err != nil {
 				panic(err.Error())
