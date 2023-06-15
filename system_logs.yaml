@@ -81,3 +81,8 @@ time="2023-06-14T15:20:20+02:00" level=info msg="timestamp: \"2023-06-14T15:20:2
 time="2023-06-14T15:20:21+02:00" level=info msg="timestamp: \"2023-06-14T15:20:21+02:00\"\nmemoryUsed: 0\ncpuUsed: 1.5232974910394266\n"
 time="2023-06-14T15:20:23+02:00" level=info msg="timestamp: \"2023-06-14T15:20:23+02:00\"\nmemoryUsed: 0\ncpuUsed: 0.7168458781362007\n"
 time="2023-06-14T15:20:24+02:00" level=info msg="CPU monitor stopped"
+time="2023-06-15T13:49:21+02:00" level=info msg="System monitor started"
+time="2023-06-15T13:58:39+02:00" level=info msg="System monitor started"
+time="2023-06-15T13:58:43+02:00" level=info msg="timestamp: \"2023-06-15T13:58:43+02:00\"\nmemoryUsed: 11.145244598388672\ncpuUsed: 0\n"
+time="2023-06-15T13:58:45+02:00" level=info msg="timestamp: \"2023-06-15T13:58:45+02:00\"\nmemoryUsed: 11.111526489257812\ncpuUsed: 0\n"
+time="2023-06-15T13:58:46+02:00" level=info msg="Memory monitor stopped"

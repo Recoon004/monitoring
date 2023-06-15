@@ -2,6 +2,6 @@ dit is hoe je de code gebruikt!
 -------------------------------
 this is how you use the code!
 -------------------------------
-NL: het is heel makelijk je start het gewoon op en hij vraagt je wat je will monitoren, je cpu of je memory en dan begint het meten te loggen wat je op dat moment gebruikt en loged het naar een yaml file genaamed system_logs.yaml. als je hem wil stopen druk je gewoon op enter net zo als die zecht dat je moet doen.
+NL: het is heel makelijk je start het gewoon op en hij vraagt je wat je will monitoren, je cpu of je memory en dan begint het meten te loggen wat je op dat moment gebruikt en loged het naar een yaml file genaamed system_logs.yaml. als je hem wil stopen druk je gewoon op enter net zo als die zecht dat je moet doen. daar me stuurt hij ook zijn gevonden data naar de data base op ons azure netwerk.
 ----------------------------------------------------------------------------------------------------------------------------------------
-ENG: its realy easy just run the code and it will ask you if you want to monitor your cpu or memory then you have to type what you want to monitor and it will begin, then it will log all its findings to the System_logs.yaml. if you want to stop the proces just press enter as it tells you to do.
+ENG: its realy easy just run the code and it will ask you if you want to monitor your cpu or memory then you have to type what you want to monitor and it will begin, then it will log all its findings to the System_logs.yaml. if you want to stop the proces just press enter as it tells you to do. with that it also sends its found data to our data base on our azure network.
